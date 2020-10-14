@@ -15,7 +15,9 @@
 
 FROM mcr.microsoft.com/mssql/server:2017-latest
 
-COPY . /
+COPY ./docker-db-init.sh /db-init.sh
+COPY ./docker-db-init.sql /db-init.sql
+COPY ./docker-entrypoint.sh /entrypoint.sh
 
 RUN mkdir -p –m777 /home/backup/ /home/data/ /home/log/
 COPY ./Bk/testDB.bak /home/backup/

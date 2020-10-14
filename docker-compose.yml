@@ -15,8 +15,11 @@ services:
             - ACCEPT_EULA=Y
             - MSSQL_PID=Express
             - SA_PASSWORD=@Batoan01326754@
-        # volumes:
-        #     - ./Db:/home/data/
-        #     # - ./Bk:/home/backup/
-        #     - ./Log:/home/log/
+        volumes:
+            - ./Db:/var/opt/mssql/data
+            # - ./Bk:/home/backup/
+            - ./Log:/var/opt/mssql/log
+            - ./docker-db-init.sh:/db-init.sh
+            - ./docker-db-init.sql:/db-init.sql
+            - ./docker-entrypoint.sh:/entrypoint.sh
         
